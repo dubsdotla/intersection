@@ -36,7 +36,7 @@
         }
         
     }
-    
+        
     for (NSNumber* number in secondarray) {
         if ([secondCountDict valueForKey:[NSString stringWithFormat: @"%d", number.intValue]] != NULL) {
             int count =  [[secondCountDict valueForKey:[NSString stringWithFormat: @"%d", number.intValue]] intValue] + 1;
@@ -49,7 +49,7 @@
         }
         
     }
-    
+        
     NSMutableOrderedSet *intersectSet = [NSMutableOrderedSet orderedSetWithArray:firstarray];
     [intersectSet intersectOrderedSet:[NSMutableOrderedSet orderedSetWithArray:secondarray]];
 
@@ -57,14 +57,14 @@
     NSMutableArray* intersectArray = [NSMutableArray array];
     
     for (NSNumber* number in intersectSet) {
-        
+                
         int count = 0;
         
         NSNumber* firstCount = [firstCountDict valueForKey:[NSString stringWithFormat: @"%d", number.intValue]];
                                 
         NSNumber* secondCount = [secondCountDict valueForKey:[NSString stringWithFormat: @"%d", number.intValue]];
         
-        if (firstCount >= secondCount) {
+        if (firstCount.intValue >= secondCount.intValue) {
             count = secondCount.intValue;
         }
         
@@ -80,7 +80,7 @@
         }
         
     }
-    
+        
     return intersectArray;
 }
 
@@ -88,8 +88,7 @@
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
-        // insert code here...
-        
+
         IntersectionClass* myIntersect = [[IntersectionClass alloc] init];
         
         NSArray* array1 = [NSArray arrayWithObjects:
